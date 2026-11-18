@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Markbook</title>
+</head>
+
+<body>
+
+    <h1>Student Marks</h1>
+
+    <p>Welcome to my student markbook, Where I keep both students and marks... in a book.</p>
+
+    <a href="/marks">Marks</a>
+    <a href="/add-student">Add Student</a>
+
+    {% if logged_in %}
+        <p>Hello {{name}}, You visited at {{time}}</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>DOB</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for count in range(20) %}
+                <tr>
+                    <td><a href="/student/{{ count + 1 }}">Bobby {{ count }}</a></td>
+                    <td>Bob</td>
+                    <td>3/01/2008</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>Please kindly login</p>
+    {% endif %}
+
+</body>
+</html>
